@@ -2,7 +2,6 @@ const throttle = require('lodash.throttle');
 const form = document.querySelector('.feedback-form');
 const input = form.querySelector('input');
 const textarea = form.querySelector('textarea');
-
 const formData = JSON.parse(localStorage.getItem('feedback-form-state')) || {};
 
 if (Object.keys(formData).length !== 0) {
