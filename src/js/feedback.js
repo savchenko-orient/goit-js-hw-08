@@ -4,10 +4,8 @@ const input = form.querySelector('input');
 const textarea = form.querySelector('textarea');
 const formData = JSON.parse(localStorage.getItem('feedback-form-state')) || {};
 
-if (Object.keys(formData).length !== 0) {
-    input.value = formData.email;
-    textarea.value = formData.message;
-}
+formData.email ? input.value = formData.email : '';
+formData.message ? textarea.value = formData.message : '';
 
 const onFormInput = (e) => {
     formData[e.target.name] = e.target.value;
