@@ -1,11 +1,10 @@
 const throttle = require('lodash.throttle');
 const form = document.querySelector('.feedback-form');
-const input = form.querySelector('input');
-const textarea = form.querySelector('textarea');
+const { email, message } = form.elements;
 const formData = JSON.parse(localStorage.getItem('feedback-form-state')) || {};
 
-formData.email ? input.value = formData.email : '';
-formData.message ? textarea.value = formData.message : '';
+formData.email ? email.value = formData.email : '';
+formData.message ? message.value = formData.message : '';
 
 const onFormInput = (e) => {
     formData[e.target.name] = e.target.value;
@@ -17,6 +16,8 @@ const onSumbit = (e) => {
     localStorage.removeItem('feedback-form-state')
     form.reset()
     console.log('formData: ', formData);
+    formData.email = '';
+    formData.message = '';
 }
 
 const throttled = throttle(onFormInput, 500);
